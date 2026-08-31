@@ -23,3 +23,21 @@ incremental phases rather than as a single monolithic build:
 `pycryptodome` is included in `requirements.txt` only as a reference/testing
 oracle to validate the from-scratch RSA implementation against a trusted
 library — it is not used to implement `rsa_core` itself.
+
+## Cryptopals scope trim (Phase 1)
+
+Original plan was Set 1 (full) → Set 2 (full) → Set 5 → Set 6, but a full
+walkthrough was estimated at 15-20+ hours against a few-hours-a-week budget
+across two parallel projects. Trimmed to protect Phase 1 delivery timeline:
+
+- Set 1: full (foundational, short)
+- Set 2: cherry-picked only — Ch12 (byte-at-a-time ECB decryption) and
+  Ch15 (PKCS#7 padding validation). Both build attack intuition that
+  transfers directly to RSA padding attacks. Rest of Set 2 skipped.
+- Set 5: skipped entirely. DH concepts (modular exponentiation) get
+  covered anyway during RSA keygen implementation.
+- Set 6: Ch39 (RSA implementation) and Ch40 (RSA broadcast attack, e=3)
+  — this is the actual point of Phase 1 and feeds directly into rsa_core
+  and the attack demo in the app.
+
+Revised estimate: ~6-10 hours total vs. 15-20+ for the full original scope.
